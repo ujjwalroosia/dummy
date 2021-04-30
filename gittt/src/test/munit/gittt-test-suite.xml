@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="gittt-test-suite.xml" />
+	<munit:test name="gittt-test-suite-gitttFlowTest" doc:id="2874d0d6-c3c5-4423-8e6b-975d8be93fcf" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to gitttFlow" doc:id="796a962c-e077-49f4-ae9a-efe52782cef5" name="gitttFlow"/>
+		</munit:execution>
+		<munit:validation>
+			<munit-tools:assert-that doc:name="Assert that" doc:id="ee429e41-c6fa-45c2-acab-e95ca5fce5d3" expression="#[payload]" is="#[MunitTools::notNullValue()]" message="is not null"/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>

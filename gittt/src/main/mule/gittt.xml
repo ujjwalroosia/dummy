@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd"></mule>
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="aeeeda35-d572-4361-b26b-feb44b8a8ab3" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="gitttFlow" doc:id="b6cad880-768e-489b-b3d1-5249a913a5c8" >
+		<http:listener doc:name="Listener" doc:id="44ebf949-c68f-4fb6-9087-929dfb1fd816" config-ref="HTTP_Listener_config" path="/any"/>
+		<set-payload value='#["hii"]' doc:name="Set Payload" doc:id="9a969783-8e8e-4e0c-bad5-c27814994cda" />
+		<logger level="INFO" doc:name="Logger" doc:id="3ff20fa6-59f2-445b-8ac9-607a33af3710" message="#[payload]"/>
+	</flow>
+</mule>
